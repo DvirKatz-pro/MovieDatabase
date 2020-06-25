@@ -1,140 +1,77 @@
-**Movie Streaming Information Database (MSIDB)**
-================
+### 1. Features & More:
 
-## **1. Objectives:**
+* Movie Search
+* Streaming Availability
+* Movie Details
+* Actors Details
+* Trailers
+* Reviews
+* Movie Adapter
+* Actor Adapter
+* Click Listeners
+* Fragments
+* RecyclerView for displaying posters
+* ASyncTask for contacting the API
+* Utelly Movie API
+* ArrayAdapter for storing movies
+* ViewHolders for inflating the row layout from xml when needed
 
-### **General Purpose:**
+### 2. Implementation:
+The application will be compatible with Android devices running Android 6.0 or newer, which is more than 60% of the Android devices globally and all those released since 2016.
 
-- Provides the user with:
-  - An easy to use All-in-One movie database
-  - Up to date streaming service information
+The following APIs will be utilized to fetch information from the above websites:
 
-- Gives the user the ability to find relevent movie information and the places they can be watched as well.
+TheMovieDB
+Utelly (from RapidAPI)
+On the home page, trending movies and recently searched movies are shown, do note that Utelly, unlike Guidebox (our trial API) does not provide top movies therefore, only placeholder movies are shown. They are grouped by streaming services and organized in scrollable rows.
 
-### **Detailed Functionalities:**
 
-- Finds movies from TheMovieDB that match the user search phrases and display the results.
+### 3. API functionality
 
-- For each search result: requests TheMovieDB (and other websites if necessary) for general information (rating, description, images, etc.), and check from Netflix, Hulu, Amazon for available streaming services.
+The App is using 2 API the moviedb: https://www.themoviedb.org/documentation/api, Utelly: https://rapidapi.com/utelly/api/utelly and previously, Guidebox: https://www.guidebox.com/
 
-- Slide shows for trending movies or recent search results.
+The App has 3 API related classes, MovieDriver, MovieAPI and MovieInterface. 
 
-- Filter movies by streaming services.
+MovieDriver: handles instructions and passes information to MovieAPI using an interface
 
-- Check if a movie is available from the user's local cinemas (if yes, provides the users with detailed time and location)
+MovieAPI: handles requests to the APIs and passes the results to MovieInterface
 
-## 2. Implementation:
+MovieInterface: holds lists of subscribing Activities, when an update from MovieAPI arrives all relevnt activities are updated with the information
 
-- The application will be compatible with Android devices running Android 6.0 or newer, which is more than 60% of the Android devices globally and all those released since 2016.
+### 4. Nebula Home Page
 
-- The following APIs will be utilized to fetch information from the above websites:
-  - TheMovieDB
-  - Utelly (from RapidAPI)
+There are three streaming services currently available: Netflix, Amazon Prime, and Google Plus. This page displays movies of those streaming services in recycler views. This page also has a search button which takes you to the search page.
 
-- On the home page, trending movies and recently searched movies will be shown. They will be grouped by streaming services and organized in scrollable rows.
+### 5. Movie Page
 
-- There will be a navigation tab on the bottom of the app to filter all movies by streaming services. From there, the user can continue filtering the movies by genres, age ratings, IMDB ratings, etc.
+This page displays movie details and three fragments for trailer, actors, and reviews. 
 
-- The search functionality will utilize Instant Searching (similar to Google's search engine)
-  - An Internet connection speedtest will be performed to decide whether Instant Search should be enabled. If not, only search suggestions will be shown, instead of the instant results.
-  - The user's search phrases will be fetched as they type.
-  - For each search phrase recorded, search from the movie database for the results by name and fetch the movie infos with included phrases.
-  - Sort the movies by relevance, then return the results for the typed search phrases.
-  - For each result, fetch the full result's information for 15 movies. As the user scrolls, information for extra results will be fetched. This is to prevent redundant data requests that would never be shown because the user would never scroll to them.
-  - As the user's search phrases change, the results will be updated in real time (the whole above process will be repeated). Also, their search phrases will be auto-filled if they match a movie's name.
-  - The search results will be filterable.
+### 6. Screenshots:
 
-- Up to 1000 search results per user search query will be cached in the form or SQL database.
-  - The number of API requests per search will be minimized. This helps reduce the app maintenance cost and make search queries less dependant to the Internet connection speed. As a result, future searches will potentially be faster.
-  - The caching process will be done in background with limited bandwidth in order to minimize interferences.
-  - The cache's size will be no more than 300 MiB to save internal storage. Search results older than 6 months old will also be deleted.
+<img width="325" alt="Screen Shot 2019-12-15 at 11 59 33 AM" src="https://user-images.githubusercontent.com/55146413/70865321-9fea9c00-1f32-11ea-80e1-57d6d09f95de.png">
 
-- When the user clicks on a movie, either from the app's homepage or search results, another page will be shown, showing that movie's details.
-  - The movie's detailed information will first be fetched from the mentioned above SQL database. Then, the missing information will be fetched using API requests.
-  - When the user clicks on an actor/ actress, a website will be opened showing their details.
+<img width="323" alt="Screen Shot 2019-12-15 at 11 59 59 AM" src="https://user-images.githubusercontent.com/55146413/70865322-9fea9c00-1f32-11ea-8a72-d3d07919fb00.png">
 
-## **3. Layout (mock-up):**
+<img width="326" alt="Screen Shot 2019-12-15 at 10 59 08 AM" src="https://user-images.githubusercontent.com/55146413/70864615-23ec5600-1f2a-11ea-8ebd-f470286af9a4.png">
 
-[Click here for the Screenshots of the Application's Mock-up Layout](https://github.com/UPEI-Android-2018/group-projects-2019-nebula/tree/master/Mock-up_Layout_Screenshots)
+<img width="325" alt="Screen Shot 2019-12-15 at 10 31 54 AM" src="https://user-images.githubusercontent.com/55146413/70865139-644ed280-1f30-11ea-9aa3-01ccf18e6422.png">
 
-## **4. General Timeline:**
+<img width="323" alt="Screen Shot 2019-12-15 at 11 39 29 AM" src="https://user-images.githubusercontent.com/55146413/70865105-facec400-1f2f-11ea-9929-36718c7de78a.png">
 
-### **Phase #1:** Basic Search Engine Implementation
+<img width="326" alt="Screen Shot 2019-12-15 at 11 40 10 AM" src="https://user-images.githubusercontent.com/55146413/70865106-fd311e00-1f2f-11ea-8b88-ecca2bf5b678.png">
 
-**Estimated Completion Date:** 31 Oct 2019
+<img width="326" alt="Screen Shot 2019-12-15 at 11 40 32 AM" src="https://user-images.githubusercontent.com/55146413/70865109-ff937800-1f2f-11ea-99fe-ccdfd20d77a4.png">
 
-- API requesting classes implemented, ensuring that search functionalities are always available.
-- GUI fully designed with at least elements for search queries being functional.
-- Basic search engine (without instant searching) implemented.
+<img width="324" alt="Screen Shot 2019-12-15 at 11 40 48 AM" src="https://user-images.githubusercontent.com/55146413/70865110-01f5d200-1f30-11ea-973e-67a89aaa3515.png">
 
-### **Phase #2:** Movie Filtering Implementation
+### 7. Requirements:
+* Internet Connection
+* Android Version 28 or Higher
 
-**Estimated Completion Date:** 14 Nov 2019
+### 8. Author:
+Hesham
 
-- Filtering engine completed.
-- GUI elements for filtering being functional.
-- Slide shows for movies in the app's home screen.
-- Classes for SQL Databases.
+Remah Badr rbadr@upei.ca
 
-### **Phase #3:** Instant Search Engine Implementation
+Dvir Katz dkatz@upei.ca
 
-**Estimated Completion Date:** 25 Nov 2019
-
-- Instant searches being functional.
-- GUI elements being fully functional.
-- Classes for SQL queries completed in preparation for Phase #4.
-    
-### **Phase #4:** SQL Database Implementation
-
-**Estimated Completion Date:** 05 Dec 2019
-
-- Hybrid search engine of SQL-querying and API-querying implemented.
-- Caching functionalities implemented.
-- Background tasks fully implemented.
-- Visual improvements for UI design.
-  
-### Phase #5: Optimizations and Completion
-
-**Estimated Completion Date:** 14 Dec 2019
-  
-- Further app optimizations.
-- Implemented the functionalities to show nearby movie theaters available for the selected movies.
-- Project Wiki built with all necessary documentations available.
-
-## **5. Task Allocation:**
-
-### **▶ Dvir Katz:**
-- API & Database Manager:
-  - MovieDB.org API Implementer
-  - Assistance with Utelly API Implementation
-  - Assistance with Map of Movie Theaters Implementation
-- Proposal Contributor:
-  - General Purpose Writer
-  - Mock-up Layout Designer
-  - Assisting Proposal Completion
-
-### **▶ Hasham Hamshary:**
-- Graphical User Interface Designer:
-  - On-Click Methods Implementer
-  - Slideshow Functionalities
-- Proposal Contributor:
-  - Mock-up Layout Designer
-  
-### **▶ Nghia Tran:**
-- Backend Implementer:
-  - Search Engine Implementer
-  - Background Tasks Implementer
-  - Search Results Caching
-  - Movie Filters Implementer
-  - Application Optimization
-- Proposal Writer:
-  - General Editor
-  - Detailed Functionalities Writer
-  - Implementation Writer
-  - General (Estimated) Timeline Writer
-  - Markdown Formatting
-
-### **▶ Remah Badr:**
-- API & Database Manager:
-  - Maps of Movie Theaters
-  - Utelly API Implementation
