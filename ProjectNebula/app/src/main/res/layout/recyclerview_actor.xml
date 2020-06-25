@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/black"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/actor_image"
+        android:contentDescription="Picture of Actor"
+        android:src="@mipmap/user"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        />
+
+    <TextView
+        android:id="@+id/actor_name"
+        android:text="actor"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/actor_image"/>
+
+    <TextView
+        android:id="@+id/character"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Character"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="15sp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/actor_image"
+        android:layout_below="@id/actor_name"
+        />
+
+</RelativeLayout>
