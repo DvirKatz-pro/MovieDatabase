@@ -1,3 +1,5 @@
+Code was written by me and 2 others listed below
+
 ### 1. Features & More:
 
 * Movie Search
