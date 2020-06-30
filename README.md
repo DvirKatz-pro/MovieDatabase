@@ -1,3 +1,5 @@
+This Was my Android class project, I handeld API connection and adapters, which transferred the movie information to be used by the UI
+
 Code was written by me and 2 others listed below
 
 ### 1. Features & More:
