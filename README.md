@@ -77,5 +77,5 @@ Hesham
 
 Remah Badr rbadr@upei.ca
 
-Dvir Katz dkatz@upei.ca
+Dvir Katz Dvir.katz.pro@gmail.com
 
